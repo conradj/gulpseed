@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="league">
+            <h1 data-bind="text: name"></h1>
+            
+        </div>
+        <div id="event-new">
+            <input type="text" id="new-event-name" />
+            <a id="event-add-button" href="#">Add New Event</a>
+        </div>
+        <div id="event">
+            <h2 data-bind="text: name"></h2>
+            <span>Games:</span>
+            <ul>
+            <!-- ko foreach:games -->
+                <li>
+                    <a data-bind="text: name, click: showGame"></a>
+                </li>
+                <!-- /ko -->
+            </ul>
+        </div>
+        <div id="game">
+            <span data-bind="text: dateStarted"></span>
+            <ul>
+                <!-- ko foreach:scores -->
+                <li>
+                    <span data-bind="text: player.name"></span>
+                    <input type="text" data-bind="value: score" />
+                </li>
+                <!-- /ko -->
+            </ul>
+        </div>
+    </body>
+    <script type="text/javascript" src="node_modules/knockout/build/output/knockout-latest.js"></script>
+
+  <!-- include source files here... -->
+    <script type="text/javascript" src="build/scripts/app.js"></script>
+<!--    <script type="text/javascript" src="build/scripts/League.js"></script>-->
+<!--
+  
+<script type="text/javascript" src="src/scripts/League.js"></script>
+    <script type="text/javascript" src="src/scripts/Event.js"></script>
+    
+    <script type="text/javascript" src="src/scripts/GameScore.js"></script>
+    <script type="text/javascript" src="src/scripts/Game.js"></script>
+    
+-->
+   
+</html>
