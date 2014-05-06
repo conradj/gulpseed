@@ -8,7 +8,7 @@ var concat = require('gulp-concat');
 //var filesize = require('gulp-filesize');
 // include plug-ins
 var jshint = require('gulp-jshint');
-livereload = require('gulp-livereload'),
+var livereload = require('gulp-livereload');
 
 /*gulp.task('clean', function () {  
   return gulp.src('build', {read: false})
@@ -31,18 +31,14 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('./build/scripts/'));
 });
 
-
-gulp.task('watch', function() {
-    
-    gulp.watch("./src/scripts/*.js", ["scripts", "jshint"]);
-});
-
 gulp.task('default', function() {  
     var server = livereload();
     gulp.watch("./src/scripts/*.js", ["scripts", "jshint"]);
-    //gulp.watch('./**').on('change', function(file) {
-    //    server.changed(file.path);
-    //});
+    
+    gulp.watch('./build/**').on('change', function(file) {
+        console.log(file.path);
+        server.changed(file.path);
+    });
 
         //gulp.run('watch');
     //gulp.watch('css/**', function(event) {
