@@ -22,6 +22,7 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('default'));
 });
 
+// scripts task
 gulp.task('scripts', function() {
     return browserify('./src/scripts/app.js')
         .bundle()
@@ -31,10 +32,12 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('./build/scripts/'));
 });
 
+// default task
 gulp.task('default', function() {  
-    var server = livereload();
+    var server = livereload(); 
+    // run other tasks when js changes
     gulp.watch("./src/scripts/*.js", ["scripts", "jshint"]);
-    
+    // refresh browser page when build directory updates
     gulp.watch('./build/**').on('change', function(file) {
         console.log(file.path);
         server.changed(file.path);
